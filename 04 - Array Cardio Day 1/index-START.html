@@ -34,31 +34,55 @@
       'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
-    
-    // Array.prototype.filter()
+
+    //Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    let arrnew = inventors.filter(elem => (elem.year >= 1500 &&  elem.year < 1600));
+    //console.log( arrnew);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    let arrname = inventors.map(item => (item = [item.first, item.last]));
+    //console.log(arrname);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    let arrsort = [...inventors].sort((a,b) => (a.year - b.year));
+    //console.log(arrsort);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    let total = 0;
+    //let totalyear = inventors.reduce((total,elem) => (total - elem.year + elem.passed)); почему не работает????
+    let totalyear = inventors.reduce((total,elem) => {return total + (elem.passed - elem.year );},0);
+    //console.log(totalyear);
 
     // 5. Sort the inventors by years lived
+    //let arrsortlived = inventors.sort((a,b) => ((a.passed - a.year) - (b.passed - b.year)));
+    let arrsortlived = inventors.sort((a,b) => {return ((a.passed - a.year) - (b.passed - b.year))},0);
+    //console.log(arrsortlived);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    //console.log(category);
+
+
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let arrsortlastname = [...inventors].sort((a,b) => {return a.last > b.last ? 1 : -1});
+    //console.log(arrsortlastname);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    let countword = data.reduce((count,word) => {
+      count[word] = count[word] ? count[word] + 1 : 1;
+      return count;
+    },{});
+    console.log(countword);
 
   </script>
 </body>
